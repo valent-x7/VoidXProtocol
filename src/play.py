@@ -38,7 +38,7 @@ class Play:
                     self.paused = not self.paused
 
             elif e.type == self.METEOR_EVENT and not self.paused:
-                pos = (randint(0, int(self.screen_width)), randint(-85, -60))
+                pos = (randint(20, int(self.screen_width)), randint(-85, -60))
                 Meteor(self.meteors_group, self.lasers_group, self.meteor_frames, self.explosion_sound, pos, self.screen_height)
         
             elif e.type == self.FRAGMENT_EVENT and not self.paused:
@@ -47,7 +47,7 @@ class Play:
                 Fragment(self.fragment_group, image, pos, self.screen_height, self.fragment_pickup)
 
             elif e.type == self.POWERUP_EVENT and not self.paused:
-                pos = (randint(0, int(self.screen_width)), randint(-85, -60))
+                pos = (randint(20, int(self.screen_width)), randint(-85, -60))
                 type = choice(self.PowerUp_Choices)
                 image = self.PowerUp_Dict[type]
 
