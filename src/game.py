@@ -70,6 +70,12 @@ class Game:
                 self.state = self.win.run(events)
                 self.play = None
 
+            elif self.state == "RETRY":
+                if self.play:
+                    self.play = None
+
+                self.state = "PLAY"
+
             elif self.state == "EXIT":
                 self.running = False
 
