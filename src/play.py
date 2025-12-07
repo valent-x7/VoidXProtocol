@@ -4,7 +4,7 @@ from sprites.meteor import Meteor
 from sprites.powerup import PowerUp
 from sprites.fragment import Fragment
 from ui.healthbar import HealthBar
-from ui.utils import draw_text
+from ui.utils import draw_text, load_fragment_goal
 from ui.counter import TimeCounter
 from ui.resourcecounter import ResourceCounter
 from settings import *
@@ -21,6 +21,8 @@ class Play:
         self.lasers_group = pygame.sprite.Group()
         self.powerups_group = pygame.sprite.Group()
         self.stars_group = stars_group
+
+        self.fragment_goal = load_fragment_goal(join(self.wd, "game_config.json"))
 
         self.setup_sprites()
         self.setup_map()
@@ -83,7 +85,7 @@ class Play:
 
         if self.player.health <= 0:
             return "GAMEOVER"
-        elif self.player.fragments >= 1:
+        elif self.player.fragments >= self.fragment_goal:
             return "WIN"
 
         return "PLAY"
@@ -154,7 +156,7 @@ class Play:
 
         self.HealthBar = HealthBar(self.heart, (42, 20), 3)
         self.TimeCounter = TimeCounter(self.screen_width / 2 - 80, 25, 160, 80, self.time_counter_font)
-        self.FragmentCounter = ResourceCounter(self.resource_counter_font, "Core Fragments", "white", (60, 180), self.fragments, 15)
+        self.FragmentCounter = ResourceCounter(self.resource_counter_font, "Core Fragments", "white", (60, 180), self.fragments, self.fragment_goal)
 
     def setup_fonts(self):
         vt323_path = join(self.wd, "assets", "fonts", "VT323", "VT323-Regular.ttf")

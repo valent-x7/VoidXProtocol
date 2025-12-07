@@ -22,7 +22,7 @@ class Win:
                     return "MENU"
                 
             if self.retry_btn.is_clicked(e):
-                return "RETRY"
+                return "PLAY"
 
             elif self.main_menu_btn.is_clicked(e):
                 return "MENU"
