@@ -21,6 +21,10 @@ class Menu:
                 
             if self.play_btn.is_clicked(e):
                 return "PLAY"
+            
+            elif self.config_btn.is_clicked(e):
+                return "CONFIG"
+
             elif self.exit_btn.is_clicked(e):
                 return "EXIT"
                 
@@ -34,7 +38,7 @@ class Menu:
         # ? --- Draw title and buttons ---
         draw_text(self.screen, self.title_font, "Void X Protocol", "white", self.screen_width // 2, self.screen_height // 3)
         self.play_btn.draw()
-        self.settings_btn.draw()
+        self.config_btn.draw()
         self.exit_btn.draw()
 
         return "MENU"
@@ -55,7 +59,7 @@ class Menu:
         # * --- Define Menu Buttons ---
         self.play_btn = ButtonUI(self.screen, (self.screen_width // 2, self.screen_height // 2), "#312c85", "#242161",
                                 self.button_font, "Play", 300, 90, self.button_clicked_sound)
-        self.settings_btn = ButtonUI(self.screen, (self.screen_width // 2, self.screen_height // 2 + 110), "#312c85", "#242161",
-                                    self.button_font, "Settings", 300, 90, self.button_clicked_sound)
+        self.config_btn = ButtonUI(self.screen, (self.screen_width // 2, self.screen_height // 2 + 110), "#312c85", "#242161",
+                                    self.button_font, "Config", 300, 90, self.button_clicked_sound)
         self.exit_btn = ButtonUI(self.screen, (self.screen_width // 2, self.screen_height // 2 + 220), "#312c85", "#242161",
                                 self.button_font, "Exit", 300, 90, self.button_clicked_sound)

@@ -12,7 +12,8 @@ class MusicManager:
             "MENU": [join(self.wd, "assets", "songs", "menu_loop.mp3"), -1],
             "PLAY": [join(self.wd, "assets", "songs", "play_loop.wav"), -1],
             "GAMEOVER": [join(self.wd, "assets", "songs", "gameover.wav"), 0],
-            "WIN": [join(self.wd, "assets", "songs", "win.mp3"), 0]
+            "WIN": [join(self.wd, "assets", "songs", "win.mp3"), 0],
+            "CONFIG": [join(self.wd, "assets", "songs", "config_loop.ogg"), -1]
         }
 
     def play_state(self, state):

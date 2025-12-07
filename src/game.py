@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from sprites.star import Star
 from menu import Menu
+from game_config import GameConfig
 from play import Play
 from gameover import GameOver
 from win import Win
@@ -24,6 +25,7 @@ class Game:
         self.play = None
         self.gameover = None
         self.win = None
+        self.config = None
         self.running = True
 
     def run(self):
@@ -70,11 +72,11 @@ class Game:
                 self.state = self.win.run(events)
                 self.play = None
 
-            elif self.state == "RETRY":
-                if self.play:
-                    self.play = None
+            elif self.state == "CONFIG":
+                if not self.config:
+                    self.config = GameConfig(self.screen)
 
-                self.state = "PLAY"
+                self.state = self.config.run(events)
 
             elif self.state == "EXIT":
                 self.running = False
